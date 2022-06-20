@@ -66,6 +66,7 @@ class RecipeResource(Resource) :
             # 데이터 insert
             #1. DB에 연결
             connection = get_connection()
+            
             #2. 쿼리문 만들기
             query = '''update recipe
                     set name= %s, description = %s, cook_time = %s, directions = %s
@@ -124,5 +125,6 @@ class RecipeResource(Resource) :
             return{'error' : str(e)}, 503
         
         return {'result' : 'success'}, 200
+
         
     

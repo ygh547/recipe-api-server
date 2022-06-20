@@ -70,6 +70,7 @@ class RecipeListResource(Resource) :
             
             # 2. 쿼리문 만들기
             query = '''select * from recipe
+                        where is_publish = 1
                         limit {}, {};'''.format(offset, limit)                  
 
             # 3. 커서를 가져온다.
