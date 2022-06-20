@@ -1,13 +1,19 @@
+from distutils.command.config import config
 from flask import Flask
 from flask_restful import Api
 
 from resources.recipe import RecipeListResource
 from resources.recipe_info import RecipeResource
 from resources.recipe_publish import RecipePublishResoure
-from resources.user import UserRegisterResource
+from resources.user import UserLoginResource, UserRegisterResource
 
 
 app = Flask(__name__)
+
+# 환경변수 셋팅
+app.config.from_object(config)
+# JWT 토큰 라이브러리 만들기
+
 
 api = Api(app)
 
@@ -16,6 +22,7 @@ api.add_resource(RecipeListResource, '/recipes')
 api.add_resource(RecipeResource, '/recipes/<int:recipe_id>')
 api.add_resource(RecipePublishResoure, '/recipes/<int:recipe_id>/publish')
 api.add_resource(UserRegisterResource, '/users/register')
+api.add_resource(UserLoginResource, '/users/login')
 
 
 
