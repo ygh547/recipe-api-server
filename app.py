@@ -1,5 +1,6 @@
 from distutils.command.config import config
 from flask import Flask
+from flask_jwt_extended import JWTManager
 from flask_restful import Api
 
 from resources.recipe import RecipeListResource
@@ -13,7 +14,8 @@ app = Flask(__name__)
 # 환경변수 셋팅
 app.config.from_object(config)
 # JWT 토큰 라이브러리 만들기
-
+app.config["JWT_SECRET_KEY"] = "super-secret"
+jwt = JWTManager(app)
 
 api = Api(app)
 
