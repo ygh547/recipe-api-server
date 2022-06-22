@@ -45,7 +45,7 @@ class RecipePublishResoure(Resource) :
 
         return {'result' : 'success'}, 200
     
-    # 레시피를 임시저장한다.
+    # 레시피를 삭제한다.
     def delete(self, recipe_id) :
         
         # is_publish 컬럼을 0으로 변경
